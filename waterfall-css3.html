@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>瀑布流-css3</title>
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    
+    .main {
+        position: relative;
+        -webkit-column-width: 184px;
+        -moz-column-width: 184px;
+        -webkit-column-gap: 3px;
+        -moz-column-gap: 3px;
+    }
+    
+    .box {
+        padding: 5px;
+        border: 1px solid #ccc;
+        box-shadow: 0 0 6px #ccc;
+        border-radius: 5px;
+        margin: 5px;
+    }
+    
+    .box img {
+        width: 100%;
+        height: auto;
+    }
+    </style>
+    <script src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+    <script>
+
+    $( window ).on( "load", function(){
+       
+        var dataInt = {       //注意数据之间需要逗号隔开
+        	"data":[
+			{'src':"01.jpg"},
+			{'src':"02.jpg"},
+			{'src':"03.jpg"},
+			{'src':"04.jpg"},
+			{'src':"05.jpg"},
+			{'src':"06.jpg"},
+			{'src':"07.jpg"},
+			{'src':"08.jpg"},
+			{'src':"09.jpg"},
+			{'src':"010.jpg"},
+			{'src':"011.jpg"},
+			{'src':"012.jpg"},
+			{'src':"013.jpg"},
+			{'src':"014.jpg"},
+			{'src':"015.jpg"},
+			{'src':"016.jpg"},
+			{'src':"017.jpg"},
+			{'src':"018.jpg"},
+			{'src':"019.jpg"},
+			{'src':"020.jpg"},
+			{'src':"021.jpg"},
+			{'src':"022.jpg"},
+			{'src':"023.jpg"},
+			{'src':"024.jpg"},
+			{'src':"025.jpg"},
+			{'src':"026.jpg"},
+			{'src':"027.jpg"},
+			{'src':"028.jpg"},
+			{'src':"029.jpg"},
+        	]
+        };
+        $(window).on("scroll",function () {
+        	if (checkScrollSlide()) {
+        		$.each(dataInt.data,function(key,value) {
+        			var oBox= $('<div>').addClass('box').appendTo($(".main"));
+        			$('<img>').attr('src','material/'+ $(value).attr('src') ).appendTo(oBox);
+        		})
+        	}
+        })
+    })
+
+    function checkScrollSlide() {
+        var lastBox = $('.box').last();
+        var lastH = lastBox.offset().top + Math.floor(lastBox.outerHeight() / 2);
+        var scrollTop = $(window).scrollTop();
+        var documentH = $(window).height();
+        return (lastH < scrollTop + documentH) ? true : false;
+
+    }
+    </script>
+</head>
+
+<body>
+    <div class="main">
+        <div class="box"><img src="material/01.jpg" alt=""></div>
+        <div class="box"><img src="material/02.jpg" alt=""></div>
+        <div class="box"><img src="material/03.jpg" alt=""></div>
+        <div class="box"><img src="material/04.jpg" alt=""></div>
+        <div class="box"><img src="material/05.jpg" alt=""></div>
+        <div class="box"><img src="material/06.jpg" alt=""></div>
+        <div class="box"><img src="material/07.jpg" alt=""></div>
+        <div class="box"><img src="material/08.jpg" alt=""></div>
+        <div class="box"><img src="material/09.jpg" alt=""></div>
+        <div class="box"><img src="material/010.jpg" alt=""></div>
+        <div class="box"><img src="material/011.jpg" alt=""></div>
+        <div class="box"><img src="material/012.jpg" alt=""></div>
+        <div class="box"><img src="material/013.jpg" alt=""></div>
+        <div class="box"><img src="material/014.jpg" alt=""></div>
+        <div class="box"><img src="material/015.jpg" alt=""></div>
+        <div class="box"><img src="material/016.jpg" alt=""></div>
+        <div class="box"><img src="material/017.jpg" alt=""></div>
+        <div class="box"><img src="material/018.jpg" alt=""></div>
+        <div class="box"><img src="material/019.jpg" alt=""></div>
+        <div class="box"><img src="material/020.jpg" alt=""></div>
+        <div class="box"><img src="material/021.jpg" alt=""></div>
+    </div>
+</body>
+
+</html>
